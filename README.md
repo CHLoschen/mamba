@@ -17,5 +17,5 @@ Examples:
 3) Predict bonds for xyz or pdb file:  
   mamba.py --predict new_molecule.xyz  
   
-[unzip .sdf files from the train_sdf directory to obtain some training files]
+[unzip .sdf files to obtain some training files]
 

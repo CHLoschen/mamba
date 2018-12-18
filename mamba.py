@@ -416,7 +416,7 @@ def train_from_csv(filename, grid_search=False, useRF=False, plotClassifier=Fals
     else:
         #model = xgb.XGBClassifier(n_estimators=2000, learning_rate=0.01, max_depth=5, NA=0, subsample=.5,colsample_bytree=1.0, min_child_weight=5, n_jobs=4, objective='multi:softprob',num_class=5, booster='gbtree', silent=1, eval_size=0.0)
         #parameters = {'n_estimators': [2000], 'learning_rate': [0.01, 0.1, 0.001], 'max_depth': [5, 7],'subsample': [0.5]}
-        model = GradientBoostingClassifier(n_estimators=1000,learning_rate=0.1,max_depth=5)
+        model = GradientBoostingClassifier(n_estimators=1000,learning_rate=0.1,max_depth=5,verbose=1)
         parameters = {}
 
 

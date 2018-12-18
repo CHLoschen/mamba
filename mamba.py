@@ -411,7 +411,7 @@ def train_from_csv(filename, grid_search=False, useRF=False, plotClassifier=Fals
     n_jobs = 1
     n_splits = 4
     if useRF:
-        model = RandomForestClassifier(n_estimators=250, max_depth=None, min_samples_leaf=5, n_jobs=4,
+        model = RandomForestClassifier(n_estimators=250, max_depth=None, min_samples_leaf=5, n_jobs=-1,
                                        max_features=X.shape[1] / 2, oob_score=False)
     else:
         #model = xgb.XGBClassifier(n_estimators=2000, learning_rate=0.01, max_depth=5, NA=0, subsample=.5,colsample_bytree=1.0, min_child_weight=5, n_jobs=4, objective='multi:softprob',num_class=5, booster='gbtree', silent=1, eval_size=0.0)

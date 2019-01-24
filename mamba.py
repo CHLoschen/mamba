@@ -21,12 +21,18 @@ from __future__ import print_function
 
 from time import time
 import os,sys,re,subprocess
-import StringIO
+
+
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+
 import random
 
 import logging
 import argparse
-import cPickle as pickle
+import pickle
 
 from rdkit.Chem import AllChem as Chem
 from rdkit.Chem import Draw
@@ -40,7 +46,11 @@ from sklearn.model_selection import StratifiedKFold,GridSearchCV
 from sklearn.metrics import classification_report, accuracy_score, f1_score, confusion_matrix
 
 import matplotlib.pyplot as plt
-import seaborn as sn
+
+try:
+   import seaborn as sn
+except ImportError:
+   print("INFO: Please install seaborn package for plotting.")
 
 __author__ = 'chris'
 
@@ -110,7 +120,7 @@ def extract_features(mol, sourcename, pos, printHeader=True, fillNa=np.nan, xyz_
 
     if printHeader and verbose:
         print('{:<4s}{:<4s}{:>4s}{:>3s}{:>3s}{:>8s}'.format('ID1','ID2','Q', '#1', '#2', 'DIST'),end='')
-        for i in xrange(2*n_cut):
+        for i in range(2*n_cut):
             if addBonds:
                 print('{:>4s}{:>3s}{:>8s}{:>8s}{:>4s}'.format('POS', '#', 'DIST', 'DISTB','BNB'),end='')
             elif bondAngles:
@@ -122,7 +132,7 @@ def extract_features(mol, sourcename, pos, printHeader=True, fillNa=np.nan, xyz_
     df = []
     index = []
 
-    for i in xrange(0,n):
+    for i in range(0,n):
         if xyz_file is not None:
             bnd_at1 = atomtypes[i]
             bond_num1 = pt.GetAtomicNumber(bnd_at1)
@@ -131,7 +141,7 @@ def extract_features(mol, sourcename, pos, printHeader=True, fillNa=np.nan, xyz_
             bond_num1 = bnd_at1.GetAtomicNum()
             bnd_at1 = bnd_at1.GetSymbol()
 
-        for j in xrange(0,m):
+        for j in range(0,m):
             row = []
             if i >= j: continue
             bnd_dist = dm[i,j]
@@ -198,6 +208,7 @@ def extract_features(mol, sourcename, pos, printHeader=True, fillNa=np.nan, xyz_
                 k = 0
                 if len(row_sorted_a) > 2:
                     for nextn in row_sorted_a:
+                        nextn = int(nextn)
                         if nextn == j_tmp or nextn == i_tmp:
                             continue
                         if k==n_cut:break
@@ -411,8 +422,8 @@ def train_from_csv(filename, grid_search=False, useRF=False, plotClassifier=Fals
     n_jobs = 1
     n_splits = 4
     if useRF:
-        model = RandomForestClassifier(n_estimators=250, max_depth=None, min_samples_leaf=5, n_jobs=-1,
-                                       max_features=X.shape[1] / 2, oob_score=False)
+        model = RandomForestClassifier(n_estimators=250, max_depth=None, min_samples_leaf=5, n_jobs=n_jobs,
+                                       max_features=11, oob_score=False)
     else:
         #model = xgb.XGBClassifier(n_estimators=2000, learning_rate=0.01, max_depth=5, NA=0, subsample=.5,colsample_bytree=1.0, min_child_weight=5, n_jobs=4, objective='multi:softprob',num_class=5, booster='gbtree', silent=1, eval_size=0.0)
         #parameters = {'n_estimators': [2000], 'learning_rate': [0.01, 0.1, 0.001], 'max_depth': [5, 7],'subsample': [0.5]}
@@ -462,8 +473,7 @@ def train_job(filename, reset=True, eval=False, fmethod='UFF', skipH=False, iter
         iter_file = train_file.replace("_dat","_iter")
 
     if useRF and not eval:
-        logging.info("Using Random Forest for training!")
-
+        logging.info("INFO: Using Random Forest for training!")
 
     if reset:
         if os.path.isfile(train_file):
@@ -1222,7 +1232,7 @@ def read_xyz(filename, skipH=False):
             q = float(qin.group(1))
         coords = []
         atomtypes = []
-        for x in xrange(natoms):
+        for x in range(natoms):
             line = fin.readline().split()
             if (line[0].lower()=='h') and skipH: continue
             atomtypes.append(line[0])
@@ -1374,7 +1384,7 @@ if __name__ == "__main__":
     group.add_argument('--shufflesplit', type=float, default=0.8, metavar='f',help='Create test and train set by splitting and shuffling molecules, f is a float [0..1] \n')
 
     parser.add_argument('--noH', action='store_true', help='omit Hydrogen atom when learning\n',default=False)
-    parser.add_argument('--useRF', action='store_true', help='use Random Forest instead of Gradient Boosting for training\n', default=False)
+    parser.add_argument('--useRF', action='store_true', help='use Random Forest instead of Gradient Boosting for training\n', default=True)
     parser.add_argument('-v','--verbose', action='store_true', help='verbose\n', default=False)
     parser.add_argument('--iterative', action='store_true', help='Iterative prediction of bonds using 2 classifiers\n', default=False)
     parser.add_argument('--sample', type=float, default=None,metavar='f',help='Subsampling of dataset during training, f is a float [0..1] \n')

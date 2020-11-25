@@ -19,3 +19,14 @@ Examples:
   
 [unzip .sdf files to obtain some training files]
 
+## Installation
+
+For installation a few python libraries are necessary, install them via pip:
+
+`pip install -r requirements.txt`
+
+RDKit affords conda for installation:
+
+`conda install -c conda-forge rdkit
+`
+

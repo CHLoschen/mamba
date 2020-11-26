@@ -48,7 +48,7 @@ from sklearn.metrics import classification_report, accuracy_score, f1_score, con
 import matplotlib.pyplot as plt
 
 try:
-   import seaborn as sn
+   import seaborn as sns
 except ImportError:
    print("INFO: Please install seaborn package for plotting.")
 
@@ -565,7 +565,7 @@ def evaluate(filename_test,filename_train='train_dat.csv',plotting=True,iterativ
         df_train = df_train[df_train.ata==6]
         df_train = df_train[df_train.atb==6]
         if plotting:
-            ax = sn.boxplot(x="bond", y="distab", data=df_train[['distab','bond']])
+            ax = sns.boxplot(x="bond", y="distab", data=df_train[['distab','bond']])
             ax.set(ylabel='C-C distance', xlabel='bond type')
             #ax.set(xticklabels=[])
             plt.show()

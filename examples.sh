@@ -54,5 +54,5 @@
 #./mamba.py --eval 3dqsar_sd/3dqsar_all_test.sdf
 #./mamba.py --eval gdb1/gdb1_test.sdf 
 
-./mamba.py --train --iterative --useRF --sample 0.3 all_train.sdf
+#./mamba.py --train --iterative --useRF --sample 0.3 all_train.sdf
 

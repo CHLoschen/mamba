@@ -1,7 +1,9 @@
 # mamba
-A python tool for the perception of chemical bonds via machine learning
+A python tool for the perception of chemical bonds via machine learning.  
+See also:  
+[Perception of Chemical Bonds via Machine Learning](https://chemrxiv.org/articles/preprint/Perception_of_Chemical_Bonds_via_Machine_Learning/7403630/2)
 
-Internally uses RDKit, numpy, pandas and scikit-learn python packages
+Internally mamba uses RDKit, numpy, pandas and scikit-learn python packages
 
 For help run:
 mamba.py -h

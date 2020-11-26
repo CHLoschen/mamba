@@ -23,12 +23,20 @@ Examples:
 
 ## Installation
 
-For installation a few python libraries are necessary, install them via pip:
+Consider creating a new virtual environment first, e.g. with ocnda:
+
+`conda create -n mamba`
+
+`conda activate mamba` 
+
+RDKit affords conda for installation, which currently cannot be installed via pip:
+
+`conda install -c conda-forge rdkit`
+
+For further installation a few python libraries are necessary, install them via pip:
 
 `pip install -r requirements.txt`
 
-RDKit affords conda for installation:
 
-`conda install -c conda-forge rdkit
 `
 

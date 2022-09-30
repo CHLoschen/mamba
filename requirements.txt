@@ -1,6 +1,6 @@
 certifi==2020.11.8
 cycler==0.10.0
-joblib==0.17.0
+joblib==1.2.0
 kiwisolver @ file:///home/conda/feedstock_root/build_artifacts/kiwisolver_1604322292766/work
 matplotlib @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-suite_1605180236495/work
 numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1604945996870/work

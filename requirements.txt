@@ -1,4 +1,4 @@
-certifi==2020.11.8
+certifi==2022.12.7
 cycler==0.10.0
 joblib==0.17.0
 kiwisolver @ file:///home/conda/feedstock_root/build_artifacts/kiwisolver_1604322292766/work

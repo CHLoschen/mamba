@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mambax"
+version = "0.1.0"
+description = "A python tool for the perception of chemical bonds via machine learning"
+readme = "README.md"
+license = {text = "BSD-3-Clause"}
+authors = [
+    {name = "Christoph Loschen"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+requires-python = ">=3.13"
+dependencies = [
+    "rdkit>=2025.9.1",
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "scipy>=1.15.0",
+    "scikit-learn>=1.7.0",
+    "matplotlib>=3.10.0",
+    "seaborn>=0.13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.1",
+    "black>=25.11.0",
+    "flake8>=7.3.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/chloschen/mamba"
+Documentation = "https://chemrxiv.org/articles/preprint/Perception_of_Chemical_Bonds_via_Machine_Learning/7403630/2"
+Repository = "https://github.com/chloschen/mamba"
+
+[project.scripts]
+mambax = "mambax.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mambax = ["py.typed"]
+

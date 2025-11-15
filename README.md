@@ -1,42 +1,68 @@
-# mamba
-A python tool for the perception of chemical bonds via machine learning.  
-See also:  
+# mambax
+
+**MAMBAX - Machine Learning Meets Bond Analytix**
+
+A python tool for the perception of chemical bonds via machine learning.
+See also:
 [Perception of Chemical Bonds via Machine Learning](https://chemrxiv.org/articles/preprint/Perception_of_Chemical_Bonds_via_Machine_Learning/7403630/2)
 
-Internally mamba uses RDKit, numpy, pandas and scikit-learn python packages
+Internally mambax uses RDKit, numpy, pandas and scikit-learn python packages
 
 For help run:
-mamba.py -h
+
+```bash
+mambax -h
+```
 
 Examples:
-    
-1) Train with large SD file:  
-  mamba.py --train largefile.sdf  
-  
-2) [Optional] Add some SD file:  
-  mamba.py --add special_case.sdf  
-  
-3) Predict bonds for xyz or pdb file:  
-  mamba.py --predict new_molecule.xyz  
-  
-[unzip .sdf files to obtain some training files]
 
-## Installation
+1) Train with large SD file:
 
-Consider creating a new virtual environment first, e.g. with ocnda:
+```bash
+  mambax --train largefile.sdf
+```
 
-`conda create -n mamba`
+2) [Optional] Add some SD file:
 
-`conda activate mamba` 
+```bash
+  mambax --add special_case.sdf
+```
 
-RDKit affords conda for installation, which currently cannot be installed via pip:
+3) Predict bonds for xyz or pdb file:
 
-`conda install -c conda-forge rdkit`
+```bash
+  mambax --predict new_molecule.xyz
+```
 
-For further installation a few python libraries are necessary, install them via pip:
+Installation
 
-`pip install -r requirements.txt`
+### Using pip
 
+Create a virtual environment (recommended):
 
-`
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
+Install mambax and all dependencies:
+
+```bash
+pip install -e .
+```
+
+Or install from source:
+
+```bash
+git clone <repository-url>
+cd mamba
+pip install -e .
+```
+
+You can also use mambax as a Python package:
+
+```python
+from mambax import extract_features, predict_bonds, train_job
+
+# Use the functions programmatically
+```

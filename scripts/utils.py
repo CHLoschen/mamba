@@ -2,7 +2,10 @@
 
 import logging
 import os,sys,re,subprocess
-import cPickle as pickle
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 
 import numpy as np
 import pandas as pd
@@ -20,7 +23,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA,TruncatedSVD
 from sklearn.manifold import TSNE
 
-from mamba import generate_predictions,convert_sdf2dataframe
+from mambax import generate_predictions,convert_sdf2dataframe
 
 __author__ = 'chris'
 

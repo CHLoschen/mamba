@@ -38,9 +38,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/chloschen/mamba"
+Homepage = "https://github.com/CHLoschen/mamba"
 Documentation = "https://chemrxiv.org/articles/preprint/Perception_of_Chemical_Bonds_via_Machine_Learning/7403630/2"
-Repository = "https://github.com/chloschen/mamba"
+Repository = "https://github.com/CHLoschen/mamba"
 
 [project.scripts]
 mambax = "mambax.__main__:main"

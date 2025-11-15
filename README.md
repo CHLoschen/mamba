@@ -28,33 +28,18 @@ Examples:
   mambax --add special_case.sdf
 ```
 
-3) Predict bonds for xyz or pdb file:
+3) Create SDF with bond information from xyz or pdb:
 
 ```bash
   mambax --predict new_molecule.xyz
 ```
 
-Installation
+## Installation
 
-### Using pip
-
-Create a virtual environment (recommended):
+Install from source:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-Install mambax and all dependencies:
-
-```bash
-pip install -e .
-```
-
-Or install from source:
-
-```bash
-git clone <repository-url>
+git clone https://github.com/CHLoschen/mamba.git
 cd mamba
 pip install -e .
 ```
